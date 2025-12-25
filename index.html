@@ -85,6 +85,48 @@ section h2 {
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
     }
+.photo-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.photo-card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  padding: 20px;
+}
+
+.photo-card:hover .overlay {
+  opacity: 1;
+}
+
+.overlay h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+}
+
+.overlay p {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
 
     .gallery img {
       width: 100%;
@@ -197,14 +239,40 @@ footer {
 
   <!-- GALLERY -->
   <section>
-    <h2>Some Beautiful Moments 📸</h2>
     <div class="gallery">
-      <!-- Replace image URLs with her photos -->
-      <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc">
-      <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9">
-      <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e">
-      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e">
+  <div class="photo-card">
+    <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc">
+    <div class="overlay">
+      <h4>Winter Evening</h4>
+      <p>A calm Christmas vibe</p>
     </div>
+  </div>
+
+  <div class="photo-card">
+    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9">
+    <div class="overlay">
+      <h4>Soft Smile</h4>
+      <p>Pure and effortless</p>
+    </div>
+  </div>
+
+  <div class="photo-card">
+    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e">
+    <div class="overlay">
+      <h4>Golden Hour</h4>
+      <p>A moment worth keeping</p>
+    </div>
+  </div>
+
+  <div class="photo-card">
+    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e">
+    <div class="overlay">
+      <h4>Quiet Happiness</h4>
+      <p>Just being you</p>
+    </div>
+  </div>
+</div>
+
   </section>
 
   <!-- MUSIC -->
