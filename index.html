@@ -317,25 +317,25 @@ allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-pictur
 
 
     </div>
-  </section>
-  <!-- QUIZ SECTION -->
+  </section><!-- QUIZ SECTION -->
 <section>
   <div class="music">
     <h2>Little Christmas Quiz 🎄</h2>
+
     <p id="quiz-question" style="margin-bottom:20px;">
       Ready? Let’s see 👀
     </p>
 
     <div class="quiz-options">
-      <button onclick="checkAnswer(0)">Option A</button>
-      <button onclick="checkAnswer(1)">Option B</button>
-      <button onclick="checkAnswer(2)">Option C</button>
+      <button onclick="checkAnswer(0)"></button>
+      <button onclick="checkAnswer(1)"></button>
+      <button onclick="checkAnswer(2)"></button>
     </div>
 
     <p id="quiz-result" style="margin-top:20px; font-weight:500;"></p>
+    <p id="quiz-score" style="margin-top:10px; opacity:0.8;"></p>
   </div>
 </section>
-
 
   <!-- FOOTER -->
   <footer>
@@ -354,17 +354,44 @@ allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-pictur
       answer: 2
     },
     {
-      question: "What season matches my vibe?",
-      options: ["Winter ❄️", "Summer ☀️", "Monsoon 🌧️"],
+      question: "What’s my comfort zone?",
+      options: ["Music 🎧", "Late-night talks 🌙", "Being alone 😶"],
+      answer: 1
+    },
+    {
+      question: "What annoys me the most?",
+      options: ["Fake people 🎭", "Noise 🔊", "Overthinking 🤯"],
       answer: 0
+    },
+    {
+      question: "My vibe mostly is?",
+      options: ["Calm & quiet 🌫️", "Random & funny 😂", "Deep thinker 🤔"],
+      answer: 2
+    },
+    {
+      question: "If I disappear for a while, I’m probably…",
+      options: ["Recharging 🔋", "Busy 🏃‍♂️", "Overthinking again 😅"],
+      answer: 0
+    },
+    {
+      question: "What makes me genuinely happy?",
+      options: ["Achievements 🏆", "Peaceful moments 🌿", "Good company 🤍"],
+      answer: 2
+    },
+    {
+      question: "My favorite kind of conversations?",
+      options: ["Funny & random 😄", "Deep & meaningful 💭", "Short & simple 🙂"],
+      answer: 1
     }
   ];
 
   let currentQ = 0;
+  let score = 0;
 
   const qText = document.getElementById("quiz-question");
   const buttons = document.querySelectorAll(".quiz-options button");
   const result = document.getElementById("quiz-result");
+  const scoreText = document.getElementById("quiz-score");
 
   function loadQuestion() {
     qText.innerText = quiz[currentQ].question;
@@ -372,23 +399,48 @@ allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-pictur
       btn.innerText = quiz[currentQ].options[i];
     });
     result.innerText = "";
+    scoreText.innerText = `Score: ${score} / ${quiz.length}`;
+  }
+
+  function showFinalMessage() {
+    qText.innerText = "That’s the end 🎄";
+    document.querySelector(".quiz-options").style.display = "none";
+
+    result.innerText = 
+      score >= 6
+      ? "You know me really well 🤍"
+      : score >= 4
+      ? "Pretty good 😄"
+      : "Haha, still learning 😅";
+
+    scoreText.innerText = 
+      `Final Score: ${score} / ${quiz.length}
+
+Christmas isn’t just about gifts —
+it’s about people who make life lighter.
+
+Thank you for being one of them 🤍🎄`;
   }
 
   function checkAnswer(selected) {
     if (selected === quiz[currentQ].answer) {
-      result.innerText = "Correct 🎉 You know me well 😄";
+      score++;
+      result.innerText = "Correct 🎉";
     } else {
-      result.innerText = "Haha, not quite 😅";
+      result.innerText = "Not quite 😅";
     }
 
     setTimeout(() => {
-      currentQ = (currentQ + 1) % quiz.length;
-      loadQuestion();
-    }, 1500);
+      currentQ++;
+      if (currentQ < quiz.length) {
+        loadQuestion();
+      } else {
+        showFinalMessage();
+      }
+    }, 1200);
   }
 
   loadQuestion();
 </script>
-
 </body>
 </html>
