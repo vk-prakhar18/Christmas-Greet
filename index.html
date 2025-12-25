@@ -227,6 +227,92 @@ footer {
   color: rgba(255,255,255,0.7);
 }
     
+/* ============================
+   MOBILE RESPONSIVENESS FIX
+   ============================ */
+@media (max-width: 768px) {
+
+  section {
+    padding: 60px 16px;
+  }
+
+  /* HERO */
+  .hero {
+    padding-top: 90px;
+  }
+
+  .hero h1 {
+    font-size: 2.1rem;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  /* NOTE & MUSIC BOXES */
+  .note,
+  .music {
+    padding: 28px 22px;
+    border-radius: 14px;
+  }
+
+  .note p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  /* GALLERY */
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .photo-card img {
+    height: 240px;
+  }
+
+  .overlay h4 {
+    font-size: 1.15rem;
+  }
+
+  .overlay p {
+    font-size: 0.85rem;
+  }
+
+  /* QUIZ */
+  .quiz-options button {
+    font-size: 0.95rem;
+    padding: 14px;
+  }
+
+  /* SPOTIFY */
+  iframe {
+    height: 300px;
+  }
+
+  /* FOOTER */
+  footer {
+    font-size: 0.8rem;
+    padding: 30px 16px;
+  }
+}
+
+/* EXTRA SMALL DEVICES */
+@media (max-width: 420px) {
+
+  .hero h1 {
+    font-size: 1.9rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  iframe {
+    height: 260px;
+  }
+}
 
   </style>
 </head>
