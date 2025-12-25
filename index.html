@@ -201,10 +201,32 @@ section h2 {
   background: rgba(255, 255, 255, 0.97);
   color: #2c2c2c;
 }
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.quiz-options button {
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: #7a0c0c;
+  color: white;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.quiz-options button:hover {
+  background: #9b1c1c;
+  transform: scale(1.03);
+}
 
 footer {
   color: rgba(255,255,255,0.7);
 }
+    
 
   </style>
 </head>
@@ -296,11 +318,77 @@ allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-pictur
 
     </div>
   </section>
+  <!-- QUIZ SECTION -->
+<section>
+  <div class="music">
+    <h2>Little Christmas Quiz 🎄</h2>
+    <p id="quiz-question" style="margin-bottom:20px;">
+      Ready? Let’s see 👀
+    </p>
+
+    <div class="quiz-options">
+      <button onclick="checkAnswer(0)">Option A</button>
+      <button onclick="checkAnswer(1)">Option B</button>
+      <button onclick="checkAnswer(2)">Option C</button>
+    </div>
+
+    <p id="quiz-result" style="margin-top:20px; font-weight:500;"></p>
+  </div>
+</section>
+
 
   <!-- FOOTER -->
   <footer>
     Made with warmth, on Christmas 🎄
   </footer>
+<script>
+  const quiz = [
+    {
+      question: "What describes me the best?",
+      options: ["Always chill 😌", "Overthinking pro 🤯", "Silent observer 👀"],
+      answer: 1
+    },
+    {
+      question: "What do I value the most?",
+      options: ["Money 💸", "Peace 🕊️", "People 🤍"],
+      answer: 2
+    },
+    {
+      question: "What season matches my vibe?",
+      options: ["Winter ❄️", "Summer ☀️", "Monsoon 🌧️"],
+      answer: 0
+    }
+  ];
+
+  let currentQ = 0;
+
+  const qText = document.getElementById("quiz-question");
+  const buttons = document.querySelectorAll(".quiz-options button");
+  const result = document.getElementById("quiz-result");
+
+  function loadQuestion() {
+    qText.innerText = quiz[currentQ].question;
+    buttons.forEach((btn, i) => {
+      btn.innerText = quiz[currentQ].options[i];
+    });
+    result.innerText = "";
+  }
+
+  function checkAnswer(selected) {
+    if (selected === quiz[currentQ].answer) {
+      result.innerText = "Correct 🎉 You know me well 😄";
+    } else {
+      result.innerText = "Haha, not quite 😅";
+    }
+
+    setTimeout(() => {
+      currentQ = (currentQ + 1) % quiz.length;
+      loadQuestion();
+    }, 1500);
+  }
+
+  loadQuestion();
+</script>
 
 </body>
 </html>
